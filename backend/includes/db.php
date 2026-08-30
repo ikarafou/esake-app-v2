@@ -20,11 +20,14 @@ define("QUAD_DATABASE", "anything_ct");
 define("QUAD_USERNAME", "atg_username");
 define("QUAD_PASSWORD", "atg_password");
 */
-$db_handler = mysqli_connect(QUAD_HOSTNAME, QUAD_USERNAME, QUAD_PASSWORD); 
-mysqli_select_db($db_handler, QUAD_DATABASE);
-$error = mysqli_error($db_handler);
-if (!empty($error)) {
-    echo "Fuck";
+try {
+    $db_handler = mysqli_connect(QUAD_HOSTNAME, QUAD_USERNAME, QUAD_PASSWORD);
+    mysqli_select_db($db_handler, QUAD_DATABASE);
+    
+} catch (mysqli_sql_exception $e) {
+    die("<strong>❌ Database Connection Error:</strong> " . htmlspecialchars($e->getMessage()));
+} catch (Exception $e) {
+    die("<strong>❌ Error:</strong> " . htmlspecialchars($e->getMessage()));
 }
 
 ?>
