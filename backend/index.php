@@ -20,7 +20,7 @@ if ($result = mysqli_query($db_handler, "SELECT COUNT(*) AS c FROM players")) {
 <div class="container mt-4">
     <div class="p-4 mb-4 bg-light rounded-3">
         <h1>ESAKE App 2.0</h1>
-        <p class="lead">Καλωσόρισες. Το backend τρέχει μέσα σε Docker και μιλάει κανονικά με τη βάση.</p>
+        <p class="lead">Καλωσόρισες στη Διαχείρηση των στοχείων της Εφαρμογής</p>
     </div>
 
     <div class="row text-center mb-4">
