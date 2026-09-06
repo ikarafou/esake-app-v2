@@ -3,7 +3,7 @@ require_once(__DIR__ . "/../../includes/db.php");
 
 // $query = "SELECT * FROM Games WHERE Championship_id = $championship_id AND GameFinished = false";
 
-$query = "SELECT * FROM Teams";
+$query = "SELECT * FROM teams";
 
 $result = mysqli_query($db_handler, $query);
 
