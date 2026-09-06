@@ -19,7 +19,7 @@
     $player_team = (int)$_POST['player_team'];
 
     // Validate position against whitelist
-    $allowed_positions = ['Point_Guard', 'Shooting_Guard', 'Small_Forward', 'Power_Forward', 'Center'];
+    $allowed_positions = ['PG', 'SG', 'SF', 'PF', 'C'];
     if (!in_array($player_position, $allowed_positions)) {
         http_response_code(400);
         $title = "Error";
@@ -96,7 +96,8 @@
 
     // Use prepared statement instead of string concatenation
     // This prevents SQL injection attacks
-    $stmt = mysqli_prepare($db_handler, "INSERT INTO players (Position, PhotoPath, Team_id, Name) VALUES (?, ?, ?, ?)");
+    $query = "INSERT INTO players (Position, PhotoPath, Team_id, Name) VALUES (?, ?, ?, ?)";
+    $stmt = mysqli_prepare($db_handler, $query);
 
     if ($stmt === false) {
         http_response_code(500);
@@ -109,8 +110,8 @@
         exit();
     }
 
-    // Bind parameters: "ssii" means string, string, integer, integer
-    mysqli_stmt_bind_param($stmt, "ssii", $player_position, $unique_name, $player_team, $player_name);
+    // Bind parameters
+    mysqli_stmt_bind_param($stmt, "ssis", $player_position, $unique_name, $player_team, $player_name);
 
     if (!mysqli_stmt_execute($stmt)) {
         http_response_code(500);

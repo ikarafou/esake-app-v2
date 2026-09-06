@@ -18,11 +18,11 @@ $result = mysqli_query($db_handler, $query);
         <div class="mb-3">
             <select class="form-select" aria-label="Default select example" id="player_position" name="player_position">
                 <option selected>Player's Position</option>
-                <option value="Point_Guard">Point Guard (PG)</option>
-                <option value="Shooting_Guard">Shooting Guard (SG)</option>
-                <option value="Small_Forward">Small Forward (SF)</option>
-                <option value="Power_Forward">Power Forward (PF)</option>
-                <option value="Center">Center (C)</option>
+                <option value="PG">Point Guard (PG)</option>
+                <option value="SG">Shooting Guard (SG)</option>
+                <option value="SF">Small Forward (SF)</option>
+                <option value="PF">Power Forward (PF)</option>
+                <option value="C">Center (C)</option>
             </select>
         </div>
         <div class="mb-3">

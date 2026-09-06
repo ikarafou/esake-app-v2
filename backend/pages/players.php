@@ -8,6 +8,14 @@ FROM players
 join teams on players.Team_id = teams.id;";
 $result = mysqli_query($db_handler, $query);
 
+$position_labels = [
+    'PG' => 'Point Guard (PG)',
+    'SG' => 'Shooting Guard (SG)',
+    'SF' => 'Small Forward (SF)',
+    'PF' => 'Power Forward (PF)',
+    'C'  => 'Center (C)'
+];
+
 ?>
 <div class="container">
     <table class="table table-striped">
@@ -23,12 +31,15 @@ $result = mysqli_query($db_handler, $query);
         </thead>
         <tbody>
 <?php
-            while($row = mysqli_fetch_assoc($result)){ ?>
+            while($row = mysqli_fetch_assoc($result)){ 
+                 // Use mapping to display full position name
+                $position_display = $position_labels[$row['Position']] ?? $row['Position'];
+                ?>
                 <tr>
                     <td><img src="/photos/<?php echo $row['PhotoPath'] ?>" alt="Photo of the player"  width="50"></td>
                     <td><?php echo $row['PlayerName'] ?></td>
                     <td><?php echo $row['TeamName'] ?></td>
-                    <td><?php echo $row['Position'] ?></td>
+                    <td><?php echo $position_display ?></td>
                     <td>Edit</td>
                     <td>Delete</td>
                 </tr>
