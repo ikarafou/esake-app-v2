@@ -43,6 +43,6 @@
             <a class="nav-link" href="/pages/players.php">Players</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/pages/championships.php">Tournaments</a>
+            <a class="nav-link" href="/pages/championships.php">Championships</a>
         </li>
     </ul>
